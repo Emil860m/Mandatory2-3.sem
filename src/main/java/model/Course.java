@@ -1,3 +1,5 @@
+package model;
+
 public class Course {
     private String name_eng;
     private String name_da;

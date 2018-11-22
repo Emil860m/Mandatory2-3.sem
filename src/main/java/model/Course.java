@@ -1,6 +1,13 @@
 package model;
 
+import javax.persistence.*;
+import java.util.ArrayList;
+
+@Entity
 public class Course {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String name_eng;
     private String name_da;
     private String study_programme;//maybe arraylist for more than 1
@@ -15,6 +22,9 @@ public class Course {
     private String content;
     private String learning_activities;
     private String exam_form;
-    private String Teachers;//maybe arraylist for more than 1
+    @ManyToMany
+    private ArrayList<Teacher> teachers;
+    @OneToMany
+    private ArrayList<Student> students;
 
 }

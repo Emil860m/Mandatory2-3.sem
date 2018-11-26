@@ -1,0 +1,168 @@
+package com.example.demo.model;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+
+@Entity
+public class Course {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    private String name_eng;
+    private String name_da;
+    private String study_programme;//maybe arraylist for more than 1
+    private boolean mandatory;
+    private int ECTS;
+    private String language;
+    private int min_students;
+    private int expected_students;
+    private int max_students;
+    private String prerequisites;
+    private String learning_outcome;
+    private String content;
+    private String learning_activities;
+    private String exam_form;
+    //@ManyToMany
+    private ArrayList<Teacher> teachers;
+    //@ManyToMany
+    private ArrayList<Student> students;
+
+    public Course() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName_eng() {
+        return name_eng;
+    }
+
+    public void setName_eng(String name_eng) {
+        this.name_eng = name_eng;
+    }
+
+    public String getName_da() {
+        return name_da;
+    }
+
+    public void setName_da(String name_da) {
+        this.name_da = name_da;
+    }
+
+    public String getStudy_programme() {
+        return study_programme;
+    }
+
+    public void setStudy_programme(String study_programme) {
+        this.study_programme = study_programme;
+    }
+
+    public boolean isMandatory() {
+        return mandatory;
+    }
+
+    public void setMandatory(boolean mandatory) {
+        this.mandatory = mandatory;
+    }
+
+    public int getECTS() {
+        return ECTS;
+    }
+
+    public void setECTS(int ECTS) {
+        this.ECTS = ECTS;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public int getMin_students() {
+        return min_students;
+    }
+
+    public void setMin_students(int min_students) {
+        this.min_students = min_students;
+    }
+
+    public int getExpected_students() {
+        return expected_students;
+    }
+
+    public void setExpected_students(int expected_students) {
+        this.expected_students = expected_students;
+    }
+
+    public int getMax_students() {
+        return max_students;
+    }
+
+    public void setMax_students(int max_students) {
+        this.max_students = max_students;
+    }
+
+    public String getPrerequisites() {
+        return prerequisites;
+    }
+
+    public void setPrerequisites(String prerequisites) {
+        this.prerequisites = prerequisites;
+    }
+
+    public String getLearning_outcome() {
+        return learning_outcome;
+    }
+
+    public void setLearning_outcome(String learning_outcome) {
+        this.learning_outcome = learning_outcome;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getLearning_activities() {
+        return learning_activities;
+    }
+
+    public void setLearning_activities(String learning_activities) {
+        this.learning_activities = learning_activities;
+    }
+
+    public String getExam_form() {
+        return exam_form;
+    }
+
+    public void setExam_form(String exam_form) {
+        this.exam_form = exam_form;
+    }
+
+    public ArrayList<Teacher> getTeachers() {
+        return teachers;
+    }
+
+    public void setTeachers(ArrayList<Teacher> teachers) {
+        this.teachers = teachers;
+    }
+
+    public ArrayList<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(ArrayList<Student> students) {
+        this.students = students;
+    }
+}

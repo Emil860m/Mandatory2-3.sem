@@ -10,7 +10,7 @@ public class Course {
     private Long id;
     private String name_eng;
     private String name_da;
-    private String study_programme;//maybe arraylist for more than 1
+    private ArrayList<Study_programme> study_programmes;
     private boolean mandatory;
     private int ECTS;
     private String language;
@@ -30,10 +30,10 @@ public class Course {
     public Course() {
     }
 
-    public Course(String name_eng, String name_da, String study_programme, boolean mandatory, int ECTS, String language, int min_students, int expected_students, int max_students, String prerequisites, String learning_outcome, String content, String learning_activities, String exam_form) {
+    public Course(String name_eng, String name_da, ArrayList<Study_programme> study_programme, boolean mandatory, int ECTS, String language, int min_students, int expected_students, int max_students, String prerequisites, String learning_outcome, String content, String learning_activities, String exam_form) {
         this.name_eng = name_eng;
         this.name_da = name_da;
-        this.study_programme = study_programme;
+        this.study_programmes = study_programme;
         this.mandatory = mandatory;
         this.ECTS = ECTS;
         this.language = language;
@@ -71,12 +71,12 @@ public class Course {
         this.name_da = name_da;
     }
 
-    public String getStudy_programme() {
-        return study_programme;
+    public ArrayList<Study_programme> getStudy_programme() {
+        return study_programmes;
     }
 
-    public void setStudy_programme(String study_programme) {
-        this.study_programme = study_programme;
+    public void setStudy_programme(ArrayList<Study_programme> study_programme) {
+        this.study_programmes = study_programme;
     }
 
     public boolean isMandatory() {

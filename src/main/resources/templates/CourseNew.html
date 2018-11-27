@@ -1,10 +1,173 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8"/>
+    <title>Student</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"/>
+
 </head>
 <body>
-<--https://getbootstrap.com/docs/4.1/components/forms/--!>
+
+<nav class="navbar navbar-expand-lg navbar-light" id="nav_top">
+    <a class="navbar-brand" href="/">KEA</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/student/show">Students <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <span class="navbar-text">
+      Welcome <span id="name_span"></span>
+    </span>
+    </div>
+</nav>
+<!--String name_eng,
+String name_da,
+ArrayList<Study_programme> study_programme,
+boolean mandatory,
+int ECTS,
+String language,
+int min_students,
+int expected_students,
+int max_students,
+String prerequisites,
+String learning_outcome,
+String content,
+String learning_activities,
+String exam_form-->
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Add New Student</h1>
+        <form method="post" action="/course/new" th:object="${course}">
+            <div class="form-group">
+                <div class="form-group">
+                    <label for="brand">Name(English) </label>
+                    <input type="text" class="form-control" id="brand" placeholder="Enter name in english" th:field="${course.name_eng}"
+                       required="true"/>
+                </div>
+                <div class="form-group">
+                    <label for="brand">Name(Danish) </label>
+                    <input type="text" class="form-control" placeholder="Enter name in danish" th:field="${course.name_da}"
+                           required="true"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                    <label for="color">Mandatory</label>
+                    <input type="checkbox" class="form-control" id="color"
+                           th:field="${course.mandatory}"
+                           required="true"/>
+
+                <div class="form-group">
+                    <label for="doors">ECTS </label>
+                    <input type="number" class="form-control" id="doors" placeholder="ECTS"
+                           th:field="${course.ECTS}" required="true"/>
+                </div>
+                <div class="form-group">
+                    <label for="doors">Language </label>
+                    <input type="text" class="form-control" placeholder="Language"
+                           th:field="${course.language}" required="true"/>
+                </div>
+                <label for="doors">Students</label>
+                <div class="form-row">
+
+                <div class="form-group col-md-4">
+                    <!--<label for="doors">Students</label>-->
+                    <input type="number" class="form-control" placeholder="Minimum students"
+                           th:field="${course.min_students}" required="true"/>
+                </div>
+                <div class="form-group col-md-4">
+
+                    <input type="number" class="form-control" placeholder="Expected students"
+                           th:field="${course.expected_students}" required="true"/>
+                </div>
+                <div class="form-group col-md-4">
+
+                    <input type="number" class="form-control" placeholder="Maximum students"
+                           th:field="${course.max_students}" required="true"/>
+                </div>
+                </div>
+                <div class="form-group">
+                    <label for="doors">Prerequisites </label>
+                    <input type="text" class="form-control" placeholder="Prerequisites"
+                           th:field="${course.prerequisites}" required="true"/>
+                </div>
+                <div class="form-group">
+                    <label for="doors">Learning outcome </label>
+                    <input type="text" class="form-control" placeholder="Learning outcome"
+                           th:field="${course.learning_outcome}" required="true"/>
+                </div>
+                <div class="form-group">
+                    <label for="doors">Content </label>
+                    <input type="text" class="form-control" placeholder="Content"
+                           th:field="${course.content}" required="true"/>
+                </div>
+                <div class="form-group">
+                    <label for="doors">Learning activities </label>
+                    <input type="text" class="form-control" placeholder="Learning activities"
+                           th:field="${course.learning_activities}" required="true"/>
+                </div>
+                <div class="form-group">
+                    <label for="doors">Exam form </label>
+                    <input type="text" class="form-control" placeholder="Exam form"
+                           th:field="${course.exam_form}" required="true"/>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-outline-success">Save</button>
+            <button type="reset" class="btn btn-outline-danger">Reset</button>
+        </form>
+    </div>
+</div>
+
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+<!--<script>-->
+<!--$(document).on("click", "#updatebtn", function () {-->
+<!--console.log("btn pressed");-->
+<!--console.log($('#brand').val());-->
+<!--$.ajax({-->
+<!--url: "http://localhost:8080/car/update/5",-->
+<!--method: "put",-->
+<!--data: {-->
+<!--brand: $('#brand').val(),-->
+<!--color: $('#color').val(),-->
+<!--doors: $('#doors').val(),-->
+<!--speed: $('#speed').val()-->
+<!--},-->
+<!--success: function (resp) {-->
+<!--console.log(resp);-->
+<!--},-->
+<!--error: function (err) {-->
+<!--console.log(err);-->
+<!--}-->
+<!--});-->
+<!--});-->
+<!--</script>-->
+
+<!--<script>-->
+<!--var userStringFromLS = localStorage.getItem('user');-->
+<!--var user = JSON.parse(userStringFromLS);-->
+<!--console.log(user.name);-->
+
+<!--$('#name_span').text(user.name);-->
+
+<!--if (user.gender == 'M') {-->
+<!--$('#nav_top').addClass('bg-primary');-->
+<!--} else {-->
+<!--$('#nav_top').addClass('bg-danger');-->
+<!--}-->
+<!--</script>-->
 </body>
 </html>

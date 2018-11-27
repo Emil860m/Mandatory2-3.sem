@@ -30,6 +30,23 @@ public class Course {
     public Course() {
     }
 
+    public Course(String name_eng, String name_da, String study_programme, boolean mandatory, int ECTS, String language, int min_students, int expected_students, int max_students, String prerequisites, String learning_outcome, String content, String learning_activities, String exam_form) {
+        this.name_eng = name_eng;
+        this.name_da = name_da;
+        this.study_programme = study_programme;
+        this.mandatory = mandatory;
+        this.ECTS = ECTS;
+        this.language = language;
+        this.min_students = min_students;
+        this.expected_students = expected_students;
+        this.max_students = max_students;
+        this.prerequisites = prerequisites;
+        this.learning_outcome = learning_outcome;
+        this.content = content;
+        this.learning_activities = learning_activities;
+        this.exam_form = exam_form;
+    }
+
     public Long getId() {
         return id;
     }

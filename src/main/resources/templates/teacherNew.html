@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8"/>
-    <title>Student</title>
+    <title>Teacher</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
@@ -23,7 +23,7 @@
                 <a class="nav-link" href="/">Home </a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/student/show">Students <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/teacher/show">Teachers <span class="sr-only">(current)</span></a>
             </li>
         </ul>
         <span class="navbar-text">
@@ -34,12 +34,12 @@
 
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
-        <h1 class="display-4">Add New Student</h1>
-        <form method="post" action="/student/new" th:object="${student}">
+        <h1 class="display-4">Add New Teacher</h1>
+        <form method="post" action="/teacher/new" th:object="${teacher}">
             <div class="form-group">
                 <label for="brand">Name: </label>
                 <input type="text" class="form-control" id="brand" placeholder="Enter name"
-                       th:field="${student.name}"
+                       th:field="${teacher.name}"
                        required="true"/>
             </div>
 
@@ -47,13 +47,13 @@
                 <div class="form-group">
                     <label for="color">Username: </label>
                     <input type="text" class="form-control" id="color" placeholder="username"
-                           th:field="${student.user_name}"
+                           th:field="${teacher.user_name}"
                            required="true"/>
                 </div>
                 <div class="form-group">
                     <label for="doors">Password: </label>
                     <input type="password" class="form-control" id="doors" placeholder="password"
-                           th:field="${student.pass_word}" required="true"/>
+                           th:field="${teacher.pass_word}" required="true"/>
                 </div>
             </div>
 
@@ -66,40 +66,40 @@
 
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
 <!--<script>-->
-    <!--$(document).on("click", "#updatebtn", function () {-->
-        <!--console.log("btn pressed");-->
-        <!--console.log($('#brand').val());-->
-        <!--$.ajax({-->
-            <!--url: "http://localhost:8080/car/update/5",-->
-            <!--method: "put",-->
-            <!--data: {-->
-                <!--brand: $('#brand').val(),-->
-                <!--color: $('#color').val(),-->
-                <!--doors: $('#doors').val(),-->
-                <!--speed: $('#speed').val()-->
-            <!--},-->
-            <!--success: function (resp) {-->
-                <!--console.log(resp);-->
-            <!--},-->
-            <!--error: function (err) {-->
-                <!--console.log(err);-->
-            <!--}-->
-        <!--});-->
-    <!--});-->
+<!--$(document).on("click", "#updatebtn", function () {-->
+<!--console.log("btn pressed");-->
+<!--console.log($('#brand').val());-->
+<!--$.ajax({-->
+<!--url: "http://localhost:8080/car/update/5",-->
+<!--method: "put",-->
+<!--data: {-->
+<!--brand: $('#brand').val(),-->
+<!--color: $('#color').val(),-->
+<!--doors: $('#doors').val(),-->
+<!--speed: $('#speed').val()-->
+<!--},-->
+<!--success: function (resp) {-->
+<!--console.log(resp);-->
+<!--},-->
+<!--error: function (err) {-->
+<!--console.log(err);-->
+<!--}-->
+<!--});-->
+<!--});-->
 <!--</script>-->
 
 <!--<script>-->
-    <!--var userStringFromLS = localStorage.getItem('user');-->
-    <!--var user = JSON.parse(userStringFromLS);-->
-    <!--console.log(user.name);-->
+<!--var userStringFromLS = localStorage.getItem('user');-->
+<!--var user = JSON.parse(userStringFromLS);-->
+<!--console.log(user.name);-->
 
-    <!--$('#name_span').text(user.name);-->
+<!--$('#name_span').text(user.name);-->
 
-    <!--if (user.gender == 'M') {-->
-        <!--$('#nav_top').addClass('bg-primary');-->
-    <!--} else {-->
-        <!--$('#nav_top').addClass('bg-danger');-->
-    <!--}-->
+<!--if (user.gender == 'M') {-->
+<!--$('#nav_top').addClass('bg-primary');-->
+<!--} else {-->
+<!--$('#nav_top').addClass('bg-danger');-->
+<!--}-->
 <!--</script>-->
 </body>
 </html>

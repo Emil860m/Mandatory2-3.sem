@@ -20,10 +20,12 @@ public class studentAPIController {
     }
 
     @PutMapping("/student/update/{id}")
-    public ResponseEntity<Student> updateCar(@PathVariable Long id,
+    public ResponseEntity<Student> updateStudent(@PathVariable Long id,
+                                         @RequestParam String user_name,
                                          @RequestParam String name,
                                          @RequestParam String pass_word) {
         Student studentToBeUpdated = studentRepo.findById(id);
+        studentToBeUpdated.setUser_name(user_name);
         studentToBeUpdated.setName(name);
         studentToBeUpdated.setPass_word(pass_word);
         studentRepo.save(studentToBeUpdated);

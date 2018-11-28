@@ -32,7 +32,7 @@ public class studentController {
     }
 
     @GetMapping("/student/edit/{id}")
-    public String carEditView(Model m, @PathVariable Long id) {
+    public String studentEditView(Model m, @PathVariable Long id) {
         Student s = studentRepo.findById(id);
         m.addAttribute("student", s);
         List<Course> courses= courseRepo.findAll();

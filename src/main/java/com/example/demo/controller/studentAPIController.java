@@ -31,4 +31,10 @@ public class studentAPIController {
         studentRepo.save(studentToBeUpdated);
         return new ResponseEntity(studentToBeUpdated, HttpStatus.OK);
     }
+
+    @DeleteMapping("/student/delete/{id}")
+    public void deleteStudent(@PathVariable Long id){
+        studentRepo.deleteById(id); 
+    }
+
 }

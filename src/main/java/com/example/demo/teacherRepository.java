@@ -8,5 +8,6 @@ import java.util.List;
 public interface teacherRepository extends CrudRepository<Teacher, Long> {
     List<Teacher> findAll();
     Teacher findById(Long id);
+    Teacher deleteById(Long id);
 
 }

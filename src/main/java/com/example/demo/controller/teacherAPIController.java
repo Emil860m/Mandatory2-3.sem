@@ -13,13 +13,13 @@ public class teacherAPIController {
     @Autowired
     private teacherRepository teacherRepo;
 
-    @PostMapping("teacher/new")
+    @PostMapping("/teacher/new")
     public ResponseEntity<Teacher> newTeacher(Teacher teacher){
         Teacher s = teacherRepo.save(teacher);
         return new ResponseEntity(s, HttpStatus.OK);
     }
 
-    @PutMapping("teacher/update/{id}")
+    @PutMapping("/teacher/update/{id}")
     public ResponseEntity<Teacher> updateTeacher(@PathVariable Long id,
                                                  @RequestParam String user_name,
                                                  @RequestParam String name,
@@ -30,6 +30,12 @@ public class teacherAPIController {
         teacherToBeSaved.setPass_word(pass_word);
         teacherRepo.save(teacherToBeSaved);
         return new ResponseEntity(teacherToBeSaved, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/teacher/delete/{id}")
+    public void deleteTeacher(@PathVariable Long id){
+        teacherRepo.deleteById(id);
+
     }
 
 }

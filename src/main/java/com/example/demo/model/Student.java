@@ -1,11 +1,14 @@
 package com.example.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 
 @Entity
 public class Student extends User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
     //@ManyToMany
     private ArrayList<Course> courses;
 

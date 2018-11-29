@@ -10,26 +10,8 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light" id="nav_top">
-    <a class="navbar-brand" href="/">KEA</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/">Home </a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="/teacher/show">Teachers <span class="sr-only">(current)</span></a>
-            </li>
-        </ul>
-        <span class="navbar-text">
-      Welcome <span id="name_span"></span>
-    </span>
-    </div>
-</nav>
+<div th:replace="/nav_bar"/>
+
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
         <h1 class="display-4">Edit Teacher</h1>
@@ -72,16 +54,16 @@
     $(document).on('click', '#update-btn', function () {
         console.log("btn pressed");
         console.log($('#name').val());
-        var carid = [[${student.id}]];
+        var carid = [[${teacher.id}]];
         $.ajax({
-            url: "http://localhost:8080/student/update/"+carid,
+            url: "http://localhost:8080/teacher/update/"+carid,
             method: "put",
             data: {
                 name: $('#name').val(),
                 pass_word: $('#pass_word').val(),
             },
             success: function (resp) {
-                alert("This student has been updated\n" + JSON.stringify(resp));
+                alert("This teacher has been updated\n" + JSON.stringify(resp));
                 location.href="/";
             },
             error: function (err) {

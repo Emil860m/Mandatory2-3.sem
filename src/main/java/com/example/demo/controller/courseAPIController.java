@@ -31,9 +31,33 @@ public class courseAPIController {
                                                @RequestParam String prerequisites,
                                                @RequestParam String learning_outcome,
                                                @RequestParam String content,
-                                               @RequestParam String ){
+                                               @RequestParam String learning_activities,
+                                               @RequestParam String exam_form,
+                                               @RequestParam String teacher1,
+                                               @RequestParam String teacher2){
+        Course courseToBeSaved = courseRepo.findbyId(id);
+        courseToBeSaved.setName_eng(name_eng);
+        courseToBeSaved.setName_da(name_da);
+        courseToBeSaved.setMandatory(mandatory);
+        courseToBeSaved.setECTS(ECTS);
+        courseToBeSaved.setLanguage(language);
+        courseToBeSaved.setMin_students(min_students);
+        courseToBeSaved.setExpected_students(expected_students);
+        courseToBeSaved.setMax_students(max_students);
+        courseToBeSaved.setPrerequisites(prerequisites);
+        courseToBeSaved.setLearning_outcome(learning_outcome);
+        courseToBeSaved.setContent(content);
+        courseToBeSaved.setLearning_activities(learning_activities);
+        courseToBeSaved.setExam_form(exam_form);
+        courseToBeSaved.setTeacher1(teacher1);
+        courseToBeSaved.setTeacher2(teacher2);
+        courseRepo.save(courseToBeSaved);
+        return new ResponseEntity(courseToBeSaved, HttpStatus.OK);
 
-
+    }
+    @DeleteMapping("/course/delete/{id}")
+    public void deleteCourse(@PathVariable Long id){
+        courseRepo.deleteById(id);
     }
 
 }

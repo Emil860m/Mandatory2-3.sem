@@ -1,10 +1,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.courseRepository;
-import com.example.demo.studentRepository;
-import com.example.demo.userRepository;
 import com.example.demo.model.Course;
 import com.example.demo.model.Student;
+import com.example.demo.studentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,8 +18,6 @@ public class studentController {
     @Autowired
     private courseRepository courseRepo;
     @Autowired
-    private userRepository userRepo;
-    @Autowired
     private studentRepository studentRepo;
 
     @GetMapping("/student/create")
@@ -34,9 +31,8 @@ public class studentController {
     @GetMapping("/student/edit/{id}")
     public String studentEditView(Model m, @PathVariable Long id) {
         Student s = studentRepo.findById(id);
+
         m.addAttribute("student", s);
-        List<Course> courses= courseRepo.findAll();
-        m.addAttribute("courses", courses);
         return "studentEdit";
     }
 

@@ -5,7 +5,7 @@ import com.example.demo.model.Course;
 import com.example.demo.model.Student;
 import com.example.demo.model.Teacher;
 import com.example.demo.studentRepository;
-import com.example.demo.userRepository;
+import com.example.demo.teacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,9 +20,7 @@ public class teacherController {
     @Autowired
     private courseRepository courseRepo;
     @Autowired
-    private userRepository userRepo;
-    @Autowired
-    private studentRepository teacherRepo;
+    private teacherRepository teacherRepo;
 
     @GetMapping("/teacher/create")
     public String newTeacher(Model m){
@@ -34,10 +32,8 @@ public class teacherController {
 
     @GetMapping("/teacher/edit/{id}")
     public String teacherEditView(Model m, @PathVariable Long id) {
-        Student s = teacherRepo.findById(id);
-        m.addAttribute("teacher", s);
-        List<Course> courses = courseRepo.findAll();
-        m.addAttribute("courses", courses);
+        Teacher t = teacherRepo.findById(id);
+        m.addAttribute("teacher", t);
         return "teacherEdit";
     }
 

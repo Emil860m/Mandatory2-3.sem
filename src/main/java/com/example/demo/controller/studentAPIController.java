@@ -34,7 +34,7 @@ public class studentAPIController {
 
     @DeleteMapping("/student/delete/{id}")
     public void deleteStudent(@PathVariable Long id){
-        studentRepo.deleteById(id); 
+        studentRepo.deleteById(id);
     }
 
 }

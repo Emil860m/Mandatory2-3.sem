@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.courseRepository;
 import com.example.demo.model.Course;
 import com.example.demo.model.Study_programme;
 import com.example.demo.model.Teacher;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -19,10 +21,19 @@ public class courseController {
     private teacherRepository teacherRepo;
     @Autowired
     private study_programmeRepository study_programmeRepo;
+    @Autowired
+    private courseRepository courseRepo;
 
     @GetMapping("/course/create")
     public String createCourse(Model m){
         m.addAttribute("course", new Course());
         return "CourseNew";
+    }
+
+    @GetMapping("/course/edit/{id}")
+    public String courseEdit(Model m, @PathVariable Long id){
+        Course c = courseRepo.findbyId(id);
+        m.addAttribute("course", c);
+        return "courseEdit";
     }
 }

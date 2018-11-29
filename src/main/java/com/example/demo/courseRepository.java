@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface courseRepository extends CrudRepository<Course, Long> {
     List<Course> findAll();
+    Course findbyId(Long id);
+    Course deleteById(Long id);
 }

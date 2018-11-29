@@ -32,8 +32,18 @@ public class courseController {
 
     @GetMapping("/course/edit/{id}")
     public String courseEdit(Model m, @PathVariable Long id){
-        Course c = courseRepo.findbyId(id);
+        Course c = courseRepo.findById(id);
         m.addAttribute("course", c);
         return "courseEdit";
     }
+
+    @GetMapping("/course")
+    public String courses(Model m){
+        List<Course> courses = courseRepo.findAll();
+        m.addAttribute("courses", courses);
+        return "courses";
+    }
+
+
+
 }

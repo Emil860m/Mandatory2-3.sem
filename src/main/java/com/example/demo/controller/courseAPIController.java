@@ -35,7 +35,7 @@ public class courseAPIController {
                                                @RequestParam String exam_form,
                                                @RequestParam String teacher1,
                                                @RequestParam String teacher2){
-        Course courseToBeSaved = courseRepo.findbyId(id);
+        Course courseToBeSaved = courseRepo.findById(id);
         courseToBeSaved.setName_eng(name_eng);
         courseToBeSaved.setName_da(name_da);
         courseToBeSaved.setMandatory(mandatory);

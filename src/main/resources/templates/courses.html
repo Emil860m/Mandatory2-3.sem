@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8"/>
-    <title>Student</title>
+    <title>Courses</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
@@ -10,6 +10,27 @@
 
 </head>
 <body>
+<div th:replace="/nav_bar"/>
+
+<table th:each="course: ${courses}" class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col" width="24%">Course(eng)</th>
+            <th scope="col" width="24%">Course(da)</th>
+            <th scope="col" width="24%">Teacher</th>
+            <th scope="col" width="24%">Teacher(optional)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><label th:text="${course.name_eng}"/></td>
+            <td><label th:text="${course.name_da}"/></td>
+            <td><label th:text="${course.teacher1}"/></td>
+            <td><label th:text="${course.teacher2}"/></td>
+        </tr>
+    </tbody>
+
+</table>
 
 </body>
 </html>

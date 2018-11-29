@@ -10,7 +10,7 @@ public class Course {
     private Long id;
     private String name_eng;
     private String name_da;
-    private ArrayList<Study_programme> study_programmes;
+    private ArrayList<String> study_programme;
     private boolean mandatory;
     private int ECTS;
     private String language;
@@ -22,18 +22,18 @@ public class Course {
     private String content;
     private String learning_activities;
     private String exam_form;
-    //@ManyToMany
-    private ArrayList<Teacher> teachers;
+    private String teacher2;
+    private String teacher1;
     //@ManyToMany
     private ArrayList<Student> students;
 
     public Course() {
     }
 
-    public Course(String name_eng, String name_da, ArrayList<Study_programme> study_programme, boolean mandatory, int ECTS, String language, int min_students, int expected_students, int max_students, String prerequisites, String learning_outcome, String content, String learning_activities, String exam_form) {
+    public Course(String name_eng, String name_da, ArrayList<String> study_programme, boolean mandatory, int ECTS, String language, int min_students, int expected_students, int max_students, String prerequisites, String learning_outcome, String content, String learning_activities, String exam_form) {
         this.name_eng = name_eng;
         this.name_da = name_da;
-        this.study_programmes = study_programme;
+        this.study_programme = study_programme;
         this.mandatory = mandatory;
         this.ECTS = ECTS;
         this.language = language;
@@ -71,12 +71,12 @@ public class Course {
         this.name_da = name_da;
     }
 
-    public ArrayList<Study_programme> getStudy_programme() {
-        return study_programmes;
+    public ArrayList<String> getStudy_programme() {
+        return study_programme;
     }
 
-    public void setStudy_programme(ArrayList<Study_programme> study_programme) {
-        this.study_programmes = study_programme;
+    public void setStudy_programme(ArrayList<String> study_programme) {
+        this.study_programme = study_programme;
     }
 
     public boolean isMandatory() {
@@ -167,12 +167,20 @@ public class Course {
         this.exam_form = exam_form;
     }
 
-    public ArrayList<Teacher> getTeachers() {
-        return teachers;
+    public String getTeacher2() {
+        return teacher2;
     }
 
-    public void setTeachers(ArrayList<Teacher> teachers) {
-        this.teachers = teachers;
+    public void setTeacher2(String teacher2) {
+        this.teacher2 = teacher2;
+    }
+
+    public String getTeacher1() {
+        return teacher1;
+    }
+
+    public void setTeacher1(String teacher1) {
+        this.teacher1 = teacher1;
     }
 
     public ArrayList<Student> getStudents() {

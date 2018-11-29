@@ -23,10 +23,6 @@ public class courseController {
     @GetMapping("/course/create")
     public String createCourse(Model m){
         m.addAttribute("course", new Course());
-        List<Teacher> teachers = teacherRepo.findAll();
-        m.addAttribute("teachers", teachers);
-        List<Study_programme> study_programmes = study_programmeRepo.findAll();
-        m.addAttribute("study_programmes", study_programmes);
         return "CourseNew";
     }
 }

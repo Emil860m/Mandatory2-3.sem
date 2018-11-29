@@ -15,10 +15,11 @@
 <table th:each="course: ${courses}" class="table table-striped">
     <thead class="thead-dark">
         <tr>
-            <th scope="col" width="24%">Course(eng)</th>
-            <th scope="col" width="24%">Course(da)</th>
-            <th scope="col" width="24%">Teacher</th>
-            <th scope="col" width="24%">Teacher(optional)</th>
+            <th scope="col" width="19%">Course(eng)</th>
+            <th scope="col" width="19%">Course(da)</th>
+            <th scope="col" width="19%">Teacher</th>
+            <th scope="col" width="19%">Teacher(optional)</th>
+            <th scope="col" width="19"></th>
         </tr>
     </thead>
     <tbody>
@@ -27,6 +28,9 @@
             <td><label th:text="${course.name_da}"/></td>
             <td><label th:text="${course.teacher1}"/></td>
             <td><label th:text="${course.teacher2}"/></td>
+            <td>
+                <a th:href="@{'/course/edit/'+${course.id}}"><button class="btn btn-outline-primary btn-lg">Edit</button></a>
+            </td>
         </tr>
     </tbody>
 

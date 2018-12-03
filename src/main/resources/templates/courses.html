@@ -23,7 +23,6 @@
     </tr>
     </thead>
     <tbody>
-<<<<<<< HEAD
         <tr>
             <td><label th:text="${course.name_eng}"/></td>
             <td><label th:text="${course.name_da}"/></td>
@@ -35,19 +34,6 @@
                 </button>
             </td>
         </tr>
-=======
-    <tr>
-        <td><label th:text="${course.name_eng}"/></td>
-        <td><label th:text="${course.name_da}"/></td>
-        <td><label th:text="${course.teacher1}"/></td>
-        <td><label th:text="${course.teacher2}"/></td>
-        <td>
-            <a th:href="@{'/course/edit/'+${course.id}}"><button class="btn btn-outline-primary btn">Edit</button></a>
-            <button type="button" class="course-delete btn btn-outline-danger" th:attr="data-id=${course.id}">Delete
-            </button>
-        </td>
-    </tr>
->>>>>>> Teachers-+-Students
     </tbody>
 
 </table>
@@ -59,10 +45,9 @@
     $(document).on("click", ".course-delete", function () {
         console.log("Button press");
         var courseId = $(this).data("id");
-<<<<<<< HEAD
 
-=======
->>>>>>> Teachers-+-Students
+
+
         $.ajax({
             url: 'http://localhost:8080/course/delete/' + courseId,
             method: 'delete',

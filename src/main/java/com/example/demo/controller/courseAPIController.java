@@ -4,6 +4,7 @@ import com.example.demo.model.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import com.example.demo.courseRepository;
 
@@ -57,9 +58,12 @@ public class courseAPIController {
         return new ResponseEntity(courseToBeSaved, HttpStatus.OK);
 
     }
+
     @DeleteMapping("/course/delete/{id}")
-    public void deleteCourse(@PathVariable Long id){
-        courseRepo.deleteById(id);
+    public ResponseEntity<Course> deleteCourse(@PathVariable Long id){
+        Course course = courseRepo.findById(id);
+        courseRepo.delete(id);
+        return new ResponseEntity(course, HttpStatus.OK);
     }
 
 }

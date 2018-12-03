@@ -22,6 +22,11 @@ public class courseController {
     @Autowired
     private courseRepository courseRepo;
 
+    @GetMapping("/")
+    public String index(){
+        return "index";
+    }
+
     @GetMapping("/course/new")
     public String createCourse(Model m){
         m.addAttribute("course", new Course());

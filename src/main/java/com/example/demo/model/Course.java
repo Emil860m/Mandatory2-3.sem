@@ -30,10 +30,10 @@ public class Course {
     public Course() {
     }
 
-    public Course(String name_eng, String name_da, ArrayList<String> study_programme, boolean mandatory, int ECTS, String language, int min_students, int expected_students, int max_students, String prerequisites, String learning_outcome, String content, String learning_activities, String exam_form) {
+    public Course(String name_eng, String name_da, boolean mandatory, int ECTS, String language, int min_students, int expected_students, int max_students, String prerequisites, String learning_outcome, String content, String learning_activities, String exam_form, String teacher1, String teacher2) {
         this.name_eng = name_eng;
         this.name_da = name_da;
-        this.study_programme = study_programme;
+       // this.study_programme = study_programme;
         this.mandatory = mandatory;
         this.ECTS = ECTS;
         this.language = language;
@@ -45,6 +45,8 @@ public class Course {
         this.content = content;
         this.learning_activities = learning_activities;
         this.exam_form = exam_form;
+        this.teacher1 = teacher1;
+        this.teacher2 = teacher2;
     }
 
     public Long getId() {
@@ -79,9 +81,10 @@ public class Course {
         this.study_programme = study_programme;
     }
 
-    public boolean isMandatory() {
+    public boolean getMandatory() {
         return mandatory;
     }
+
 
     public void setMandatory(boolean mandatory) {
         this.mandatory = mandatory;

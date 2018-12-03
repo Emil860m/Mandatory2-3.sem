@@ -35,22 +35,24 @@ public class courseAPIController {
                                                @RequestParam String exam_form,
                                                @RequestParam String teacher1,
                                                @RequestParam String teacher2){
+        Course course = new Course(name_eng, name_da, mandatory, ECTS, language, min_students, expected_students, max_students, prerequisites, learning_outcome, content, learning_activities, exam_form, teacher1, teacher2);
+
         Course courseToBeSaved = courseRepo.findById(id);
-        courseToBeSaved.setName_eng(name_eng);
-        courseToBeSaved.setName_da(name_da);
-        courseToBeSaved.setMandatory(mandatory);
-        courseToBeSaved.setECTS(ECTS);
-        courseToBeSaved.setLanguage(language);
-        courseToBeSaved.setMin_students(min_students);
-        courseToBeSaved.setExpected_students(expected_students);
-        courseToBeSaved.setMax_students(max_students);
-        courseToBeSaved.setPrerequisites(prerequisites);
-        courseToBeSaved.setLearning_outcome(learning_outcome);
-        courseToBeSaved.setContent(content);
-        courseToBeSaved.setLearning_activities(learning_activities);
-        courseToBeSaved.setExam_form(exam_form);
-        courseToBeSaved.setTeacher1(teacher1);
-        courseToBeSaved.setTeacher2(teacher2);
+        courseToBeSaved.setName_eng(course.getName_eng());
+        courseToBeSaved.setName_da(course.getName_da());
+        courseToBeSaved.setMandatory(course.getMandatory());
+        courseToBeSaved.setECTS(course.getECTS());
+        courseToBeSaved.setLanguage(course.getLanguage());
+        courseToBeSaved.setMin_students(course.getMin_students());
+        courseToBeSaved.setExpected_students(course.getExpected_students());
+        courseToBeSaved.setMax_students(course.getMax_students());
+        courseToBeSaved.setPrerequisites(course.getPrerequisites());
+        courseToBeSaved.setLearning_outcome(course.getLearning_outcome());
+        courseToBeSaved.setContent(course.getContent());
+        courseToBeSaved.setLearning_activities(course.getLearning_activities());
+        courseToBeSaved.setExam_form(course.getExam_form());
+        courseToBeSaved.setTeacher1(course.getTeacher1());
+        courseToBeSaved.setTeacher2(course.getTeacher2());
         courseRepo.save(courseToBeSaved);
         return new ResponseEntity(courseToBeSaved, HttpStatus.OK);
 

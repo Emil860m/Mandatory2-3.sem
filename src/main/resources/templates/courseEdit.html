@@ -32,86 +32,86 @@ String exam_form-->
         <form method="post" action="/course/new" th:object="${course}">
             <div class="form-group">
                 <div class="form-group">
-                    <label for="brand">Name(English) </label>
-                    <input type="text" class="form-control" id="brand" placeholder="Enter name in english" th:field="${course.name_eng}"
+                    <label for="name_eng">Name(English) </label>
+                    <input type="text" class="form-control" id="name_eng" placeholder="Enter name in english" th:field="${course.name_eng}"
                            required="true"/>
                 </div>
                 <div class="form-group">
-                    <label for="brand">Name(Danish) </label>
-                    <input type="text" class="form-control" placeholder="Enter name in danish" th:field="${course.name_da}"
+                    <label for="name_da">Name(Danish) </label>
+                    <input type="text" class="form-control" id="name_da" placeholder="Enter name in danish" th:field="${course.name_da}"
                            required="true"/>
                 </div>
             </div>
 
             <div class="form-group">
 
-                <label for="color">Mandatory</label>
-                <input type="checkbox" class="form-control" id="color"
+                <label for="mandatory">Mandatory</label>
+                <input type="checkbox" class="form-control" id="mandatory"
                        th:field="${course.mandatory}"
                        required="true"/>
 
                 <div class="form-group">
-                    <label for="doors">ECTS </label>
-                    <input type="number" class="form-control" id="doors" placeholder="ECTS"
+                    <label for="ECTS">ECTS </label>
+                    <input type="number" class="form-control" id="ECTS" placeholder="ECTS"
                            th:field="${course.ECTS}" required="true"/>
                 </div>
                 <div class="form-group">
-                    <label for="doors">Language </label>
-                    <input type="text" class="form-control" placeholder="Language"
+                    <label for="language">Language </label>
+                    <input type="text" class="form-control" placeholder="Language" id="language"
                            th:field="${course.language}" required="true"/>
                 </div>
                 <div class="form-row">
 
                     <div class="form-group col-md-4">
-                        <label for="doors">Minimum students</label>
+                        <label for="min_students">Minimum students</label>
                         <!--<label for="doors">Students</label>-->
-                        <input type="number" class="form-control" placeholder="Minimum students"
+                        <input type="number" class="form-control" placeholder="Minimum students" id="min_students"
                                th:field="${course.min_students}" required="true"/>
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="doors">Expected students</label>
-                        <input type="number" class="form-control" placeholder="Expected students"
+                        <label for="expected_students">Expected students</label>
+                        <input type="number" class="form-control" placeholder="Expected students" id="expected_students"
                                th:field="${course.expected_students}" required="true"/>
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="doors">Maximum students</label>
-                        <input type="number" class="form-control" placeholder="Maximum students"
+                        <label for="max_students">Maximum students</label>
+                        <input type="number" class="form-control" placeholder="Maximum students" id="max_students"
                                th:field="${course.max_students}" required="true"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="doors">Prerequisites </label>
-                    <input type="text" class="form-control" placeholder="Prerequisites"
+                    <label for="prerequisites">Prerequisites </label>
+                    <input type="text" class="form-control" placeholder="Prerequisites" id="prerequisites"
                            th:field="${course.prerequisites}" required="true"/>
                 </div>
                 <div class="form-group">
-                    <label for="doors">Learning outcome </label>
-                    <input type="text" class="form-control" placeholder="Learning outcome"
+                    <label for="learning_outcome">Learning outcome </label>
+                    <input type="text" class="form-control" placeholder="Learning outcome" id="learning_outcome"
                            th:field="${course.learning_outcome}" required="true"/>
                 </div>
                 <div class="form-group">
-                    <label for="doors">Content </label>
-                    <input type="text" class="form-control" placeholder="Content"
+                    <label for="content">Content </label>
+                    <input type="text" class="form-control" placeholder="Content" id="content"
                            th:field="${course.content}" required="true"/>
                 </div>
                 <div class="form-group">
-                    <label for="doors">Learning activities </label>
-                    <input type="text" class="form-control" placeholder="Learning activities"
+                    <label for="learning_activities">Learning activities </label>
+                    <input type="text" class="form-control" placeholder="Learning activities" id="learning_activities"
                            th:field="${course.learning_activities}" required="true"/>
                 </div>
                 <div class="form-group">
-                    <label for="doors">Exam form </label>
-                    <input type="text" class="form-control" placeholder="Exam form"
+                    <label for="exam_form">Exam form </label>
+                    <input type="text" class="form-control" placeholder="Exam form" id="exam_form"
                            th:field="${course.exam_form}" required="true"/>
                 </div>
                 <div class="form-group">
-                    <label for="doors">Teacher 1 </label>
-                    <input type="text" class="form-control" placeholder="Teacher"
+                    <label for="teacher1">Teacher 1 </label>
+                    <input type="text" class="form-control" placeholder="Teacher" id="teacher1"
                            th:field="${course.teacher1}" required="true"/>
                 </div>
                 <div class="form-group">
-                    <label for="doors">Teacher 2 </label>
-                    <input type="text" class="form-control" placeholder="Teacher"
+                    <label for="teacher2">Teacher 2 </label>
+                    <input type="text" class="form-control" placeholder="Teacher" id="teacher2"
                            th:field="${course.teacher2}" required="false"/>
                 </div>
                 <div class="form-group">
@@ -126,11 +126,51 @@ String exam_form-->
             </div>
 
 
-            <button type="submit" class="btn btn-outline-success">Save</button>
+            <button type="button" class="btn btn-outline-success" id="update-btn">Save</button>
             <button type="reset" class="btn btn-outline-danger">Reset</button>
         </form>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script th:inline="javascript">
+    $(document).on('click', '#update-btn', function () {
+        var courseId = [[${course.id}]];
+        var test = $('#name_eng').val();
+        $.ajax({
+            url: "http://localhost:8080/course/update/" + courseId,
+            method: "put",
+            name_eng: test,
+            data: {
+
+                name_eng: test,
+                name_da: $('#name_da').val(),
+                study_programme: $('#study_programme').val(),
+                mandatory: $('#mandatory').val(),
+               // user: $('#inputUser option:selected').val()
+                language: $('#language').val(),
+                min_students: $('#min_students').val(),
+                expected_students: $('#expected_students').val(),
+                max_students: $('#max_students').val(),
+                prerequisites: $('#prerequisites').val(),
+                learning_outcome: $('#learning_outcome').val(),
+                content: $('#content').val(),
+                learning_activities: $('#learning_activities').val(),
+                exam_form: $('#exam_form').val(),
+                teacher1: $('#teacher1').val(),
+                teacher2: $('#teacher2').val(),
+                ECTS: $('#ECTS').val(),
+            },
+            success: function (resp) {
+                alert("This course has been updated\n" + JSON.stringify(resp));
+                location.href="/course";
+            },
+            error: function (err) {
+                alert("ERROR\n" + JSON.stringify(err));
+                location.reload();
+            }
+        });
+    });
+</script>
 
 
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->

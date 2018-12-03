@@ -2,8 +2,6 @@ package com.example.demo.controller;
 
 import com.example.demo.courseRepository;
 import com.example.demo.model.Course;
-import com.example.demo.model.Study_programme;
-import com.example.demo.model.Teacher;
 import com.example.demo.study_programmeRepository;
 import com.example.demo.teacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +40,12 @@ public class courseController {
         List<Course> courses = courseRepo.findAll();
         m.addAttribute("courses", courses);
         return "courses";
+    }
+    @GetMapping("/course/{id}")
+    public String course(Model m, @PathVariable Long id){
+        Course c = courseRepo.findById(id);
+        m.addAttribute("course", c);
+        return "courseDetails";
     }
 
 

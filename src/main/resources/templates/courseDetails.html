@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title>New course</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"/>
+
+</head>
+<body>
+
+<div th:replace="/nav_bar"/>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4"><label th:text="${course.name_eng}"></label></h1>
+        <form>
+            <div class="form-group">
+                <div class="form-group">
+                    <label><Strong>Name(English)</Strong> </label><br/>
+                    <label th:text="${course.name_eng}"></label>
+
+                </div>
+                <div class="form-group">
+                    <label><Strong>Name(Danish)</Strong></label><br/>
+                    <label th:text="${course.name_da}"></label>
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <label><Strong>Mandatory</Strong></label><br/>
+                <label th:text="${course.mandatory}"></label>
+
+                <div class="form-group">
+                    <label><Strong>ECTS</Strong> </label><br/>
+                    <label th:text="${course.ECTS}"></label>
+
+                </div>
+                <div class="form-group">
+                    <label><Strong>Language</Strong> </label><br/>
+                    <label th:text="${course.language}"></label>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label><Strong>Minimum students</Strong></label><br/>
+                        <label th:text="${course.min_students}"></label>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label><Strong>Expected students</Strong></label><br/>
+                        <label th:text="${course.expected_students}"></label>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label><Strong>Maximum students</Strong></label><br/>
+                        <label th:text="${course.max_students}"></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label><Strong>Prerequisites</Strong> </label><br/>
+                    <label th:text="${course.prerequisites}"></label>
+                </div>
+                <div class="form-group">
+                    <label><Strong>Learning outcome</Strong> </label><br/>
+                    <label th:text="${course.learning_outcome}"></label>
+                </div>
+                <div class="form-group">
+                    <label><Strong>Content </Strong></label><br/>
+                    <label th:text="${course.content}"></label>
+                </div>
+                <div class="form-group">
+                    <label><Strong>Learning activities </Strong></label><br/>
+                    <label th:text="${course.learning_activities}"></label>
+                </div>
+                <div class="form-group">
+                    <label><Strong>Exam form </Strong></label><br/>
+                    <label th:text="${course.exam_form}"></label>
+                </div>
+                <div class="form-group">
+                    <label><Strong>Teacher 1</Strong> </label><br/>
+                    <label th:text="${course.teacher1}"></label>
+                </div>
+                <div class="form-group">
+                    <label><Strong>Teacher 2 </Strong></label><br/>
+                    <label th:text="${course.teacher2}"></label>
+                </div>
+                <div class="form-group">
+                    <label><Strong>Study programme</Strong></label><br/>
+                    <label th:text="${course.study_programme}"></label>
+                </div>
+            </div>
+
+
+
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>

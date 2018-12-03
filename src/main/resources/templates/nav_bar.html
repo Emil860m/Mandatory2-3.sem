@@ -21,14 +21,35 @@
             <li class="nav-item">
                 <a class="nav-link" href="/">Home </a>
             </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    New
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="/student/new">Student</a>
+                    <a class="dropdown-item" href="/teacher/new">Teacher</a>
+                    <a class="dropdown-item" href="/student/new">Course</a>
             <li class="nav-item active">
-                <a class="nav-link" href="/student/show">Students <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/student/new">Students <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/teacher/new">Teachers <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/course/new">Courses <span class="sr-only">(current)</span></a>
             </li>
         </ul>
         <span class="navbar-text">
       Welcome <span id="name_span"></span>
     </span>
     </div>
+    <script>
+        $('ul.nav li.dropdown').hover(function() {
+            $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
+        }, function() {
+            $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
+        });
+    </script>
 </nav>
 </body>
 </html>

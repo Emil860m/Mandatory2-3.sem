@@ -20,7 +20,7 @@ public class studentController {
     @Autowired
     private studentRepository studentRepo;
 
-    @GetMapping("/student/create")
+    @GetMapping("/student/new")
     public String newStudent(Model m){
         m.addAttribute("student", new Student());
         List<Course> courses = courseRepo.findAll();

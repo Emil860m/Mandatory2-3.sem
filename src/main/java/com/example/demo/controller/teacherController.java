@@ -22,7 +22,7 @@ public class teacherController {
     @Autowired
     private teacherRepository teacherRepo;
 
-    @GetMapping("/teacher/create")
+    @GetMapping("/teacher/new")
     public String newTeacher(Model m){
         m.addAttribute("teacher", new Teacher());
         List<Course> courses = courseRepo.findAll();

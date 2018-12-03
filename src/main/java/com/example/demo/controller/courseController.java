@@ -24,7 +24,7 @@ public class courseController {
     @Autowired
     private courseRepository courseRepo;
 
-    @GetMapping("/course/create")
+    @GetMapping("/course/new")
     public String createCourse(Model m){
         m.addAttribute("course", new Course());
         return "CourseNew";

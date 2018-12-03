@@ -36,10 +36,10 @@ public class studentController {
         return "studentEdit";
     }
 
-    @GetMapping("/students")
-    public String studentView(Model m){
-        List<Student> students = studentRepo.findAll();
-        m.addAttribute("students", students);
-        return "students";
-    }
+//    @GetMapping("/students")
+//    public String studentView(Model m){
+//        List<Student> students = studentRepo.findAll();
+//        m.addAttribute("students", students);
+//        return "students";
+//    }
 }

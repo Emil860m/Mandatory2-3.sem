@@ -14,15 +14,16 @@
 
 <table th:each="course: ${courses}" class="table table-striped">
     <thead class="thead-dark">
-        <tr>
-            <th scope="col" width="19%">Course(eng)</th>
-            <th scope="col" width="19%">Course(da)</th>
-            <th scope="col" width="19%">Teacher</th>
-            <th scope="col" width="19%">Teacher(optional)</th>
-            <th scope="col" width="19"></th>
-        </tr>
+    <tr>
+        <th scope="col" width="19%">Course(eng)</th>
+        <th scope="col" width="19%">Course(da)</th>
+        <th scope="col" width="19%">Teacher</th>
+        <th scope="col" width="19%">Teacher(optional)</th>
+        <th scope="col" width="19"></th>
+    </tr>
     </thead>
     <tbody>
+<<<<<<< HEAD
         <tr>
             <td><label th:text="${course.name_eng}"/></td>
             <td><label th:text="${course.name_da}"/></td>
@@ -34,6 +35,19 @@
                 </button>
             </td>
         </tr>
+=======
+    <tr>
+        <td><label th:text="${course.name_eng}"/></td>
+        <td><label th:text="${course.name_da}"/></td>
+        <td><label th:text="${course.teacher1}"/></td>
+        <td><label th:text="${course.teacher2}"/></td>
+        <td>
+            <a th:href="@{'/course/edit/'+${course.id}}"><button class="btn btn-outline-primary btn">Edit</button></a>
+            <button type="button" class="course-delete btn btn-outline-danger" th:attr="data-id=${course.id}">Delete
+            </button>
+        </td>
+    </tr>
+>>>>>>> Teachers-+-Students
     </tbody>
 
 </table>
@@ -45,7 +59,10 @@
     $(document).on("click", ".course-delete", function () {
         console.log("Button press");
         var courseId = $(this).data("id");
+<<<<<<< HEAD
 
+=======
+>>>>>>> Teachers-+-Students
         $.ajax({
             url: 'http://localhost:8080/course/delete/' + courseId,
             method: 'delete',

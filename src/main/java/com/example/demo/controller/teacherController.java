@@ -38,6 +38,12 @@ public class teacherController {
         return "teacherEdit";
     }
 
+    @GetMapping("/teachers")
+    public String teacherView(Model m){
+        List<Teacher> teachers = teacherRepo.findAll();
+        m.addAttribute("teachers", teachers);
+        return "teachers";
+    }
 
 
 }

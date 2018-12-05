@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.Course;
 import com.example.demo.studentRepository;
 import com.example.demo.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +34,10 @@ public class studentAPIController {
     }
 
     @DeleteMapping("/student/delete/{id}")
-    public void deleteStudent(@PathVariable Long id){
-        studentRepo.deleteById(id);
+    public ResponseEntity<Student> deleteStudent(@PathVariable Long id){
+        Student student = studentRepo.findById(id);
+        studentRepo.delete(id);
+        return new ResponseEntity(student, HttpStatus.OK);
     }
 
 }

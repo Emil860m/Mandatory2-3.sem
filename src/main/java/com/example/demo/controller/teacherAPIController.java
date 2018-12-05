@@ -32,10 +32,14 @@ public class teacherAPIController {
         return new ResponseEntity(teacherToBeSaved, HttpStatus.OK);
     }
 
-    @DeleteMapping("/teacher/delete/{id}")
-    public void deleteTeacher(@PathVariable Long id){
-        teacherRepo.deleteById(id);
 
+
+
+    @DeleteMapping("/teacher/delete/{id}")
+    public ResponseEntity<Teacher> deleteTeacher(@PathVariable Long id){
+        Teacher teacher = teacherRepo.findById(id);
+        teacherRepo.delete(id);
+        return new ResponseEntity(teacher, HttpStatus.OK);
     }
 
 }

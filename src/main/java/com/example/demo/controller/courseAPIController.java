@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Course;
+import com.example.demo.model.Student;
+import com.example.demo.studentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,14 +10,23 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import com.example.demo.courseRepository;
 
+import java.util.List;
+
 @RestController
 public class courseAPIController {
     @Autowired
     private courseRepository courseRepo;
+    @Autowired
+    private studentRepository studentRepo;
+
+   public static Long courseId;
 
     @PostMapping("/course/new")
     public ResponseEntity<Course> newCourse(Course course){
-        Course c = courseRepo.save(course);
+        Course c = course;
+        List<Student> students = studentRepo.findAll();
+        c.setStudents(students);
+        courseRepo.save(course);
         return new ResponseEntity(course, HttpStatus.OK);
     }
 
@@ -65,5 +76,24 @@ public class courseAPIController {
         courseRepo.delete(id);
         return new ResponseEntity(course, HttpStatus.OK);
     }
+
+    @PutMapping("/course/{id}/addedStudents")
+    public ResponseEntity<Course> addStudents(@PathVariable Long id, @RequestParam List<Student> students){
+        Course course = courseRepo.findById(id);
+        course.setStudents(students);
+        courseRepo.save(course);
+        return new ResponseEntity(course, HttpStatus.OK);
+
+    }
+//    @PostMapping("/course/addStudents")
+//    public ResponseEntity<Course> addStudent(@RequestParam List<Student> students){
+//
+//        Course course = courseRepo.findById(courseId);
+//        course.setStudents(students);
+//        courseRepo.save(course);
+//
+//        return new ResponseEntity<>(course,HttpStatus.OK);
+//    }
+
 
 }

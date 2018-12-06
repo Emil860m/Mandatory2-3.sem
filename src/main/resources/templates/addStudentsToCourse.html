@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Add students to course</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"/>
+
+</head>
+<body>
+<div th:replace="/nav_bar"/>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4"><label th:text="${course.name_eng}"></label></h1>
+        <Form method="post" action="/course/addStudents" >
+
+            <label>Students(all marked is assigned to this course)</label>
+                <select multiple="multiple" class="form-control" th:field="${students}" >
+                    <option th:each="student: ${students}" th:value="${student}"><label th:text="${student.name}"></label></option>
+                </select>
+            <button type="submit" class="btn btn-outline-success" id="update-btn">Save</button>
+                 </Form>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    
+</script>
+</body>
+</html>

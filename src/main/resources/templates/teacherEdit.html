@@ -54,9 +54,9 @@
     $(document).on('click', '#update-btn', function () {
         console.log("btn pressed");
         console.log($('#name').val());
-        var carid = [[${teacher.id}]];
+        var teacherId = [[${teacher.id}]];
         $.ajax({
-            url: "http://localhost:8080/teacher/update/"+carid,
+            url: "http://localhost:8080/teacher/update/"+teacherId,
             method: "put",
             data: {
                 name: $('#name').val(),

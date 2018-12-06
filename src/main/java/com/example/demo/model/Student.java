@@ -11,18 +11,18 @@ public class Student{
     private String user_name;
     private String pass_word;
     private String name;
-    //@ManyToMany
-    private ArrayList<Course> courses;
+    @ManyToOne
+    private Course course;
 
     public Student() {
     }
 
-    public ArrayList<Course> getCourses() {
-        return courses;
+    public Course getCourses() {
+        return course;
     }
 
-    public void setCourses(ArrayList<Course> courses) {
-        this.courses = courses;
+    public void setCourses(Course course) {
+        this.course = course;
     }
 
     public String getUser_name() {
@@ -55,5 +55,10 @@ public class Student{
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

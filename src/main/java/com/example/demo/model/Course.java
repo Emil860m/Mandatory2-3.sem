@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Course {
@@ -24,8 +25,8 @@ public class Course {
     private String exam_form;
     private String teacher2;
     private String teacher1;
-    //@ManyToMany
-    private ArrayList<Student> students;
+    @OneToMany
+    private List<Student> students;
 
     public Course() {
     }
@@ -186,11 +187,11 @@ public class Course {
         this.teacher1 = teacher1;
     }
 
-    public ArrayList<Student> getStudents() {
+    public List<Student> getStudents() {
         return students;
     }
 
-    public void setStudents(ArrayList<Student> students) {
+    public void setStudents(List<Student> students) {
         this.students = students;
     }
 }

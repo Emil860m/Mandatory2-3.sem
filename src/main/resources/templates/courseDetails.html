@@ -88,7 +88,15 @@
                     <label><Strong>Study programme</Strong></label><br/>
                     <label th:text="${course.study_programme}"></label>
                 </div>
+                <div class="form-group">
+                    <label><Strong>Students assigned</Strong></label><br/>
+                    <!--<div class="form-row" th:each="student: ${course.students}">-->
+                    <label th:text="${course.students}"></label>
+                    <!--</div>-->
+                </div>
+                <a th:href="@{'/course/'+${course.id}+'/addstudents'}"><button class="btn btn-outline-primary btn">Add students</button></a>
             </div>
+
 
 
 

@@ -2,18 +2,25 @@ package com.example.demo.controller;
 
 import com.example.demo.courseRepository;
 import com.example.demo.model.Course;
+import com.example.demo.model.Student;
+import com.example.demo.studentRepository;
 import com.example.demo.study_programmeRepository;
 import com.example.demo.teacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.demo.controller.courseAPIController.courseId;
 
 @Controller
 public class courseController {
+    private Long courseId;
 
     @Autowired
     private teacherRepository teacherRepo;
@@ -21,6 +28,8 @@ public class courseController {
     private study_programmeRepository study_programmeRepo;
     @Autowired
     private courseRepository courseRepo;
+    @Autowired
+    private studentRepository studentRepo;
 
     @GetMapping("/course/new")
     public String createCourse(Model m){
@@ -48,6 +57,24 @@ public class courseController {
         return "courseDetails";
     }
 
+    @GetMapping("/course/{id}/addstudents")
+    public String addStudentsToCourse(Model m, @PathVariable Long id){
+        courseId = id;
+        Course c = courseRepo.findById(id);
+        m.addAttribute("course", c);
+        List<Student> students = studentRepo.findAll();
+        m.addAttribute("students", students);
+        return "addStudentsToCourse";
+    }
 
+    @PostMapping("/course/addStudents")
+    public ResponseEntity<Course> addStudent(@RequestParam ArrayList<Student> students){
+
+        Course course = courseRepo.findById(courseId);
+        course.setStudents(students);
+        courseRepo.save(course);
+
+        return new ResponseEntity<>(course, HttpStatus.OK);
+    }
 
 }
